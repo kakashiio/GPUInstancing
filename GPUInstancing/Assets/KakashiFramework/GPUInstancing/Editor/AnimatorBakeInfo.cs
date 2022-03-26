@@ -17,13 +17,12 @@ namespace KakashiFramework.GPUInstancing
         public readonly int FPS;
         public readonly GameObject Go;
         public readonly int TotalVertex;
-        public readonly string DefaultState;
         
-        public AnimatorBakeInfo(GameObject go, int sampleFPS = 30, int maxTextureSize = 2048) : this(go.GetComponent<Animator>(), sampleFPS, maxTextureSize)
+        public AnimatorBakeInfo(GameObject go, int sampleFPS = 30) : this(go.GetComponent<Animator>(), sampleFPS)
         {
         }
 
-        public AnimatorBakeInfo(Animator animator, int sampleFPS = 30, int maxTextureSize = 2048)
+        public AnimatorBakeInfo(Animator animator, int sampleFPS = 30)
         {
             FPS = sampleFPS;
             Go = animator.gameObject;
@@ -31,7 +30,6 @@ namespace KakashiFramework.GPUInstancing
 
             var animatorController = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
             var stateMachine = animatorController.layers[0].stateMachine;
-            DefaultState = stateMachine.defaultState.name;
             var childAnimatorStates = stateMachine.states;
             for (int i = 0; i < childAnimatorStates.Length; i++)
             {
