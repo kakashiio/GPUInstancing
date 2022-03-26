@@ -14,7 +14,6 @@ namespace KakashiFramework.GPUInstancing
     public class AnimationBaker
     {
         public const int DEFAULT_SAMPLE_FPS = 30;
-        public const int DEFAULT_MAX_TEXTURE_FPS = 2048;
         public const string DEFAULT_MESH_OBJ_NAME = "surface";
 
         public static BakeResult Bake(GameObject go, int sampleFPS = DEFAULT_SAMPLE_FPS)
