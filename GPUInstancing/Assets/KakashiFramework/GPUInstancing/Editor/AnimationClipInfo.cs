@@ -16,9 +16,11 @@ namespace KakashiFramework.GPUInstancing
         public readonly int TotalFrame;
         public readonly int TotalPixel;
         public readonly int SampleFPS;
+        public readonly string Name;
 
-        public AnimationClipInfo(AnimationClip clip, int totalFrame, int totalPixel, int sampleFPS)
+        public AnimationClipInfo(string name, AnimationClip clip, int totalFrame, int totalPixel, int sampleFPS)
         {
+            Name = name;
             Clip = clip;
             TotalFrame = totalFrame;
             TotalPixel = totalPixel;

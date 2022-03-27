@@ -79,7 +79,7 @@ namespace KakashiFramework.GPUInstancing
                 }
             }
  
-            return new AnimationInfo(animationClipInfo.Clip.name, texture, fps, animationClipInfo.TotalFrame, vertextCount, vertexMin, vertexMax);
+            return new AnimationInfo(animationClipInfo.Name, texture, fps, animationClipInfo.TotalFrame, vertextCount, vertexMin, vertexMax);
         }
 
         public static GameObject CreateObjectWithMeshRenderer(GameObject srcGo, string meshObjName = DEFAULT_MESH_OBJ_NAME)

@@ -38,7 +38,7 @@ namespace KakashiFramework.GPUInstancing
                 
                 int frameCount = Mathf.CeilToInt(clip.length * sampleFPS);
                 int pixelCount = frameCount * TotalVertex;
-                AnimationClipInfos.Add(state.name, new AnimationClipInfo(clip, frameCount, pixelCount, sampleFPS));
+                AnimationClipInfos.Add(state.name, new AnimationClipInfo(state.name, clip, frameCount, pixelCount, sampleFPS));
             }
         }
     }
