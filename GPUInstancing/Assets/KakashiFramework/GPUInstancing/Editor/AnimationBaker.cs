@@ -53,12 +53,10 @@ namespace KakashiFramework.GPUInstancing
         {
             int frameCount = animationClipInfo.TotalFrame;
             var mesh = new Mesh();
-            int vertextCount = 0;
             
             int vertexDiff = vertexMax - vertexMin;
             Func<float, float> cal = (v) => (v - vertexMin) / vertexDiff;
             
-            vertextCount += skinnedMeshRenderer.sharedMesh.vertexCount;
             int pixelIndex = 0;
             for (int i = 0; i < frameCount; i++)
             {
