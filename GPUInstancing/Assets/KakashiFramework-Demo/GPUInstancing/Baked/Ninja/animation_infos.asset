@@ -12,32 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a5912421f6e463ca3e69c918d097b2, type: 3}
   m_Name: animation_infos
   m_EditorClassIdentifier: 
+  VertexCount: 2042
   AllAnimationInfo:
   - AnimationName: Idle
     Texture: {fileID: 2800000, guid: b58e66f4d1f0a42dfa349274bfd1d169, type: 3}
     FrameRate: 30
     FrameCount: 60
-    VertexCount: 2042
     VertexMax: 5
     VertexMin: -2
   - AnimationName: FastRun
     Texture: {fileID: 2800000, guid: 79efdad843b254cdd8d7beb0d1501471, type: 3}
     FrameRate: 30
     FrameCount: 16
-    VertexCount: 2042
     VertexMax: 5
     VertexMin: -2
   - AnimationName: Fight
     Texture: {fileID: 2800000, guid: e6cb90d41a43942d4981da7ebf9abaa5, type: 3}
     FrameRate: 30
     FrameCount: 141
-    VertexCount: 2042
     VertexMax: 5
     VertexMin: -2
   - AnimationName: Walk
     Texture: {fileID: 2800000, guid: 66acb3c25e734421ba843934e781d6e5, type: 3}
     FrameRate: 30
     FrameCount: 29
-    VertexCount: 2042
     VertexMax: 5
     VertexMin: -2

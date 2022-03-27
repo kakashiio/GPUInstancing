@@ -39,7 +39,7 @@ namespace KakashiFramework.GPUInstancing
             AnimationInfo animationInfo = _GetAnimationInfo(aniName);
             
             var mat = Material;
-            mat.SetInt(VERTEX_COUNT, animationInfo.VertexCount);
+            mat.SetInt(VERTEX_COUNT, AnimationInfos.VertexCount);
             mat.SetInt(VERTEX_MIN, animationInfo.VertexMin);
             mat.SetInt(VERTEX_MAX, animationInfo.VertexMax);
             

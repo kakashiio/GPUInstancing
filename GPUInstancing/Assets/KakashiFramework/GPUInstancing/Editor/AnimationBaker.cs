@@ -44,6 +44,7 @@ namespace KakashiFramework.GPUInstancing
             }
             
             AnimationInfos animationInfos = ScriptableObject.CreateInstance<AnimationInfos>();
+            animationInfos.VertexCount = animatorBakeInfo.TotalVertex;
             animationInfos.SetAnimationInfo(animationInfoList.ToArray());
             return animationInfos;
         }
@@ -79,7 +80,7 @@ namespace KakashiFramework.GPUInstancing
                 }
             }
  
-            return new AnimationInfo(animationClipInfo.Name, texture, fps, animationClipInfo.TotalFrame, vertextCount, vertexMin, vertexMax);
+            return new AnimationInfo(animationClipInfo.Name, texture, fps, animationClipInfo.TotalFrame, vertexMin, vertexMax);
         }
 
         public static GameObject CreateObjectWithMeshRenderer(GameObject srcGo, string meshObjName = DEFAULT_MESH_OBJ_NAME)

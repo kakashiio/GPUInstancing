@@ -12,6 +12,7 @@ namespace KakashiFramework.GPUInstancing
     //******************************************
     public class AnimationInfos : ScriptableObject
     {
+        public int VertexCount;
         public AnimationInfo[] AllAnimationInfo;
 
         public void SetAnimationInfo(AnimationInfo[] animationInfos)
