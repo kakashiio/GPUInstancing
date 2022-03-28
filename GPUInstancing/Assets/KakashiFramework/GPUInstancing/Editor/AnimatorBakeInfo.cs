@@ -17,12 +17,14 @@ namespace KakashiFramework.GPUInstancing
         public readonly int FPS;
         public readonly GameObject Go;
         public readonly int TotalVertex;
+        public readonly int TotalPixel;
+        public readonly int MaxTextureSize;
         
-        public AnimatorBakeInfo(GameObject go, int sampleFPS = 30) : this(go.GetComponent<Animator>(), sampleFPS)
+        public AnimatorBakeInfo(GameObject go, int sampleFPS = 30, int maxTextureSize = 2048) : this(go.GetComponent<Animator>(), sampleFPS, maxTextureSize)
         {
         }
 
-        public AnimatorBakeInfo(Animator animator, int sampleFPS = 30)
+        public AnimatorBakeInfo(Animator animator, int sampleFPS = 30, int maxTextureSize = 2048)
         {
             FPS = sampleFPS;
             Go = animator.gameObject;
@@ -31,6 +33,7 @@ namespace KakashiFramework.GPUInstancing
             var animatorController = animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController;
             var stateMachine = animatorController.layers[0].stateMachine;
             var childAnimatorStates = stateMachine.states;
+            int totalPixel = 0;
             for (int i = 0; i < childAnimatorStates.Length; i++)
             {
                 var state = childAnimatorStates[i].state;
@@ -38,8 +41,12 @@ namespace KakashiFramework.GPUInstancing
                 
                 int frameCount = Mathf.CeilToInt(clip.length * sampleFPS);
                 int pixelCount = frameCount * TotalVertex;
+                totalPixel += pixelCount;
                 AnimationClipInfos.Add(state.name, new AnimationClipInfo(state.name, clip, frameCount, pixelCount, sampleFPS));
             }
+
+            MaxTextureSize = maxTextureSize;
+            TotalPixel = totalPixel;
         }
     }
 }

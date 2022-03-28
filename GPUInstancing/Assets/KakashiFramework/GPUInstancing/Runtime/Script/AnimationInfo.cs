@@ -20,12 +20,13 @@ namespace KakashiFramework.GPUInstancing
         public int FrameCount;
         public int VertexMax;
         public int VertexMin;
+        public int PixelIndex;
 
         public AnimationInfo()
         {
         }
 
-        public AnimationInfo(string animationName, Texture2D texture, int frameRate, int frameCount, int vertexMin, int vertexMax)
+        public AnimationInfo(string animationName, Texture2D texture, int frameRate, int frameCount, int vertexMin, int vertexMax, int pixelIndex)
         {
             AnimationName = animationName;
             Texture = texture;
@@ -33,6 +34,7 @@ namespace KakashiFramework.GPUInstancing
             FrameCount = frameCount;
             VertexMin = vertexMin;
             VertexMax = vertexMax;
+            PixelIndex = pixelIndex;
         }
 
     }

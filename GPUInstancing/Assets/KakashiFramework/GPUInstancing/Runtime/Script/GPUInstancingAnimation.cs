@@ -18,6 +18,8 @@ namespace KakashiFramework.GPUInstancing
         private static int VERTEX_MIN = Shader.PropertyToID("_VertexMin");
         private static int VERTEX_MAX = Shader.PropertyToID("_VertexMax");
         private static int ANI_TEX = Shader.PropertyToID("_AniTex");
+        private static int PIXEL_OFFSET = Shader.PropertyToID("_PixelOffset");
+        
 
         public AnimationInfos AnimationInfos;
         public Material Material;
@@ -46,6 +48,7 @@ namespace KakashiFramework.GPUInstancing
             _MaterialPropertyBlock.SetInt(FRAME_COUNT, animationInfo.FrameCount);
             _MaterialPropertyBlock.SetInt(SAMPLE_RATE, animationInfo.FrameRate);
             _MaterialPropertyBlock.SetInt(FRAME_OFFSET, 0);
+            _MaterialPropertyBlock.SetInt(PIXEL_OFFSET, animationInfo.PixelIndex);
             _MaterialPropertyBlock.SetTexture(ANI_TEX, animationInfo.Texture);
             
             GetComponentInChildren<Renderer>().SetPropertyBlock(_MaterialPropertyBlock);

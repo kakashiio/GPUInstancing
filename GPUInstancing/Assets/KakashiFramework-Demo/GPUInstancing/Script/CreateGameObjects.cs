@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using KakashiFramework.GPUInstancing;
 using UnityEngine;
 
 public class CreateGameObjects : MonoBehaviour
@@ -11,6 +13,9 @@ public class CreateGameObjects : MonoBehaviour
     
     private Transform[] _Parents;
     private int _ActiveIndex;
+
+    private int _AniIndex;
+    private List<GPUInstancingAnimation> _GPUInstancingAnimations = new List<GPUInstancingAnimation>();
     
     void Start()
     {
@@ -20,7 +25,7 @@ public class CreateGameObjects : MonoBehaviour
             var prefab = Prefabs[i];
             
             Animator animator = prefab.GetComponent<Animator>();
-
+            bool instancing = animator == null;
             var parentGo = new GameObject(prefab.name + "(" + (animator ? "Animator" : "Instancing Animation") + ")");
             parentGo.SetActive(i == _ActiveIndex);
             _Parents[i] = parentGo.transform;
@@ -32,7 +37,11 @@ public class CreateGameObjects : MonoBehaviour
                 {
                     for (int z = 0; z < ZCount; z++)
                     {
-                        Instantiate(prefab, new Vector3(pos(x, XCount), pos(y, YCount), pos(z, ZCount)), Quaternion.identity, _Parents[i]);
+                        var go = Instantiate(prefab, new Vector3(pos(x, XCount), pos(y, YCount), pos(z, ZCount)), Quaternion.identity, _Parents[i]);
+                        if (instancing)
+                        {
+                            _GPUInstancingAnimations.Add(go.GetComponent<GPUInstancingAnimation>());
+                        }
                     }
                 }    
             }
@@ -59,6 +68,17 @@ public class CreateGameObjects : MonoBehaviour
                 _Parents[_ActiveIndex].gameObject.SetActive(false);
                 _Parents[i].gameObject.SetActive(true);
                 _ActiveIndex = i;
+            }
+        }
+
+        if (GUILayout.Button("Next"))
+        {
+            var allAnimationInfo = _GPUInstancingAnimations[0].AnimationInfos.AllAnimationInfo;
+            _AniIndex = (_AniIndex + 1) % allAnimationInfo.Length;
+            var aniName = allAnimationInfo[_AniIndex].AnimationName;
+            foreach (var gpuInstancingAnimation in _GPUInstancingAnimations)
+            {
+                gpuInstancingAnimation.Play(aniName);
             }
         }
     }
